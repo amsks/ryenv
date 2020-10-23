@@ -136,7 +136,7 @@ class DiskEnv():
         ])
 
         self.config.setJointState(joint_q)
-        self.simulation.step(u_control=[], tau=self.tau)
+        self.simulation.step(u_control=[0, 0, 0, 0, 0, 0, 0], tau=self.tau)
         self.reset_disk(coords=disk_position)
 
     def evolve(
@@ -148,7 +148,7 @@ class DiskEnv():
         Evolve the simulation for n_steps time steps of length self.tau
         """
         for _ in range(n_steps):
-            self.simulation.step(u_control=[], tau=self.tau)
+            self.simulation.step(u_control=[0, 0, 0, 0, 0, 0, 0], tau=self.tau)
             if fps is not None:
                 time.sleep(1/fps)
 
@@ -180,7 +180,7 @@ class DiskEnv():
             joint_q[0] += self.proportion_per_step * action[0]
             joint_q[1] += self.proportion_per_step * action[1]
             self.config.setJointState(joint_q)
-            self.simulation.step(u_control=[], tau=self.tau)
+            self.simulation.step(u_control=[0, 0, 0, 0, 0, 0, 0], tau=self.tau)
             if fps is not None:
                 time.sleep(1/fps)
 
@@ -522,7 +522,7 @@ class DiskMazeEnv():
         ])
 
         self.config.setJointState(joint_q)
-        self.simulation.step(u_control=[], tau=self.tau)
+        self.simulation.step(u_control=[0, 0, 0, 0, 0, 0, 0], tau=self.tau)
         self.reset_disk(coords=disk_position)
 
     def transition(
@@ -542,7 +542,7 @@ class DiskMazeEnv():
             joint_q[0] += self.proportion_per_step * action[0]
             joint_q[1] += self.proportion_per_step * action[1]
             self.config.setJointState(joint_q)
-            self.simulation.step(u_control=[], tau=self.tau)
+            self.simulation.step(u_control=[0, 0, 0, 0, 0, 0, 0], tau=self.tau)
             if fps is not None:
                 time.sleep(1/fps)
 
